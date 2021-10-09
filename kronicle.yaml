@@ -4,32 +4,32 @@
 # [Kronicle](https://kronicle.tech)
 
 components:
-  - id: fulfillment-service
-    name: Fulfillment Service
+  - id: order-service
+    name: Order Service
     type: microservice
     repo:
-      url: https://github.com/kronicle-computers/kronicle-computers-fulfillment-service.git
+      url: https://github.com/kronicle-computers/kronicle-computers-order-service.git
     description: |
-      The microservice that fulfills orders for customers of the fictional Kronicle Computer online shop
+      The microservice that creates and tracks the status of orders for customers of the fictional Kronicle Computer online shop
     tags:
       - backend
     teams:
-      - teamId: fulfillment
+      - teamId: orders
     platform: kubernetes
     dependencies:
-      - targetComponentId: fulfillment-service-database
+      - targetComponentId: order-service-database
       - targetComponentId: zipkin
-  - id: fulfillment-service-database
-    name: Fulfillment Service Database
+  - id: order-service-database
+    name: Order Service Database
     type: database
     repo:
-      url: https://github.com/kronicle-computers/kronicle-computers-fulfillment-service.git
+      url: https://github.com/kronicle-computers/kronicle-computers-order-service.git
     description: |
-      The database that holds fulfillment data for the [Fulfillment Service](/components/fulfillment-service)
+      The database that holds order data for the [Order Service](/components/order-service)
     tags:
       - backend
     teams:
-      - teamId: fulfillment
+      - teamId: orders
     platform: kubernetes
     dependencies:
       - targetComponentId: main-mongodb-cluster
