@@ -1,0 +1,35 @@
+# This file is read automatically by Kronicle https://kronicle.tech
+
+# The contents of this file is for Kronicle Computers, a fictional online computer shop, used as an example by
+# [Kronicle](https://kronicle.tech)
+
+components:
+  - id: fulfillmen-service
+    name: Fulfillment Service
+    type: microservice
+    repo:
+      url: https://github.com/kronicle-computers/kronicle-computers-fulfillment-service.git
+    description: |
+      The microservice that fulfills orders for customers of the fictional Kronicle Computer online shop
+    tags:
+      - backend
+    teams:
+      - teamId: fulfillment
+    platform: kubernetes
+    dependencies:
+      - targetComponentId: fulfillment-service-database
+      - targetComponentId: zipkin
+  - id: fulfillment-service-database
+    name: Fulfillment Service Database
+    type: database
+    repo:
+      url: https://github.com/kronicle-computers/kronicle-computers-fulfillment-service.git
+    description: |
+      The database that holds fulfillment data for the [Fulfillment Service](/components/fulfillment-service)
+    tags:
+      - backend
+    teams:
+      - teamId: fulfillment
+    platform: kubernetes
+    dependencies:
+      - targetComponentId: main-mongodb-cluster
