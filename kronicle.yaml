@@ -4,7 +4,7 @@
 # [Kronicle](https://kronicle.tech)
 
 components:
-  - id: fulfillmen-service
+  - id: fulfillment-service
     name: Fulfillment Service
     type: microservice
     repo:
