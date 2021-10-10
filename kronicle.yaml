@@ -31,6 +31,7 @@ components:
       The database that holds order data for the [Order Service](/components/order-service)
     tags:
       - backend
+      - customer-pii-at-rest
     teams:
       - teamId: orders
     platform: kubernetes
@@ -47,6 +48,7 @@ components:
       customer order
     tags:
       - backend
+      - customer-pii-at-rest
     teams:
       - teamId: orders
     platform: aws-managed-service
