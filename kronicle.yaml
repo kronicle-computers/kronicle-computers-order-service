@@ -4,9 +4,10 @@
 # [Kronicle](https://kronicle.tech)
 
 components:
+
   - id: order-service
     name: Order Service
-    type: microservice
+    typeId: microservice
     repo:
       url: https://github.com/kronicle-computers/kronicle-computers-order-service.git
     description: |
@@ -18,10 +19,12 @@ components:
     platform: kubernetes
     dependencies:
       - targetComponentId: order-service-database
+      - targetComponentId: order-queue
       - targetComponentId: zipkin
+
   - id: order-service-database
     name: Order Service Database
-    type: database
+    typeId: mongodb-database
     repo:
       url: https://github.com/kronicle-computers/kronicle-computers-order-service.git
     description: |
@@ -33,3 +36,17 @@ components:
     platform: kubernetes
     dependencies:
       - targetComponentId: main-mongodb-cluster
+
+  - id: order-queue
+    name: Order Queue
+    typeId: aws-sqs-queue
+    repo:
+      url: https://github.com/kronicle-computers/kronicle-computers-order-service.git
+    description: |
+      A queue that the [Order Service](/components/order-service) writes an event message to for each new and amended
+      customer order
+    tags:
+      - backend
+    teams:
+      - teamId: orders
+    platform: aws-managed-service
